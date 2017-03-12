@@ -1,6 +1,8 @@
 			MINE SWEEPER 83  v4.1
 By Chris Hamilton of Basicoder (www.basicoderz.com)
 
+available for download at: http://www.ticalc.org/pub/83/basic/games/puzzle/minesweeper/msweep.zip
+
 IF YOU PLAY THIS GAME THEN PLEASE E-MAIL ME A COMMENT at chrisrham@hotmail.com
 
 v4.1 released 6-29-00
