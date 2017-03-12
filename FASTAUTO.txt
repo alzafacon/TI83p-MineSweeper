@@ -1,0 +1,166 @@
+1→L
+1→dim(L₁
+1→dim(L₂
+A→I
+B→J
+//while stack is not empty
+While L>0
+
+  //on a zero not revealed yet
+  If [A](I,J)=0 and 8<[B](I,J
+  Then
+    //move as far left as possible
+    While J>1 and 0=[A](I,J
+      J-1→J
+    End
+  End
+  
+  //If on a !0 and not revealed yet
+  If [A](I,J) and 8<[B](I,J
+  Then
+    //reveal !0 tile
+    C+1→C
+    [A](I,J→[B](I,J
+    Text(6I-5,6J-4,Ans
+    //Should we advance????????? I think yes
+    If J<W
+      J+1→J
+    //The condition may be unnecesarry
+  End
+  
+  //If on a zero: add to stack
+  If 0=[A](I,J
+  Then
+    //look above 
+    If I>1
+    Then
+      //If not processed yet
+      If 8<[B](I-1,J
+      Then
+        L+1→L
+        I-1→L₁(L
+        J-(J>1)→L₂(L
+        12→[B](I,J
+      End
+    End
+    //look below
+    If I<H
+    Then
+      //If not procesed yet
+      If 8<[B](I,J
+      Then
+        L+1→L
+        I+1→L₁(L
+        J-(J>1)→L₂(L
+        12→[B](I,J
+      End
+    End
+  End
+  
+  //Continue printing zeroes
+  While J≤W and 0=[A](I,J
+    C+1→C
+    0→[B](I,J
+    Text(6I-5,6J-4,"   "
+    J+1→J
+  End
+  If J>W
+    J-1→J
+  //done looking at zeros
+  
+  //If advanced to !0
+  If [A](I,J
+  Then
+    //While not revealed yet
+    While 8<[B](I,J
+      //calculate if above or below is Zero
+      not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+      //not processed and !0 and above or below is Zero
+      While 8<[B](I,J) and [A](I,J) and not([A](I+G,J
+        //Reveal !0
+        C+1→C
+        [A](I,J→[B](I,J
+        Text(6I-5,6J-4,Ans
+        J+1→J
+        //If out of range
+        If J>W
+        Then
+          J-1→J
+          0→G
+        End
+      End
+      //end While 8<[B](I,J) and [A](I,J) and G
+      
+      //If prev while was broken b/c we switched to a 0
+      If 0=[A](I,J) and 8<[B](I,J
+      Then
+        //If on a zero: add to stack
+        If 0=[A](I,J
+        Then
+          //look above 
+          If I>1
+          Then
+            //If not processed yet
+            If 8<[B](I-1,J
+            Then
+              L+1→L
+              I-1→L₁(L
+              J-(J>1)→L₂(L
+              12→[B](I,J
+            End
+          End
+          //look below
+          If I<H
+          Then
+            //If not procesed yet
+            If 8<[B](I,J
+            Then
+              L+1→L
+              I+1→L₁(L
+              J-(J>1)→L₂(L
+              12→[B](I,J
+            End
+          End
+        End
+        //end 0=[A](I,J (if on zero: add to stack)
+        //Continue printing zeroes
+        While J≤W and 0=[A](I,J
+        
+          C+1→C
+          0→[B](I,J
+          Text(6I-5,6J-4,"   "
+          J+1→J
+        End
+        If J>W
+          J-1→J
+        //done looking at zeros
+      Else
+        //Reveal the !0
+        If 8<[B](I,J)
+        Then
+          C+1→C
+          //[A](I,J→[B](I,J
+          Text(6I-5,6J-4,Ans
+        End
+      End
+      //end If 0=[A](I,J) and 8<[B](I,J
+    End
+    //end While not revealed yet
+    //end While 8<[B](I,J
+  End
+  //end If advanced to !0
+  //end If [A](I,J
+  
+  //while (I,J) is already revealed
+  While L>1 and 9>[B](I,J
+    L₁(L→I
+    L₂(L→J
+    L-1→L
+  End
+  If L=1 and 9>[B](I,J
+  Then
+    L₁(L→I
+    L₂(L→J
+    L-1→L
+  End
+End

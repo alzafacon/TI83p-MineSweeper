@@ -1,0 +1,33 @@
+Mine Sweeper: Table of Variables
+================================
+A cursor coordinate row
+B cursor coordinate column
+C Count spaces revealed
+D
+E
+F number of Flags placed
+G 
+H Height of board
+I used to iterate as a copy of A
+J used to iterate as a copy of B
+K Key press
+L
+M
+N
+O
+P Play status
+Q Queue head 'pointer'
+R Queue tail 'pointer' (Rear)
+S 
+T Time
+U
+V
+W Width of Board
+X
+Y
+Z
+TH
+Str1 template of cover pattern
+GDB1 Protects previous Graph enviroment
+[A] hold clues and bombs
+[B] keeps track of what is displayed

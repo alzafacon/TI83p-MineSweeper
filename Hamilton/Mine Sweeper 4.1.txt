@@ -1,0 +1,105 @@
+			MINE SWEEPER 83  v4.1
+By Chris Hamilton of Basicoder (www.basicoderz.com)
+
+IF YOU PLAY THIS GAME THEN PLEASE E-MAIL ME A COMMENT at chrisrham@hotmail.com
+
+v4.1 released 6-29-00
+
+Controls - Enter finishes the game. When you press it, the program checks if you have won.
+	2nd selcts a spot
+	Alpha places a flag
+	Arrows move the cursor.
+	Press 2nd after you have lost to skip the correcting
+
+Features   - Auto Opening!! - when you select spot that is zero it opens up the whole area of zeros and it is pretty fast too.
+	- Smily Face - This is the only Calculator Mine Sweeper(that I know of) to feature the smily face.  
+	-You can't lose on the first spot you select - If it is a mine then it is moved
+	-Advanced control
+		-No cursor slide
+		-no loss of 2nd, Alpha or Enter presses
+		-Fast cursor movement
+	- Auto Directions - The first time you play it gives you the directions automatically.
+	- 7x10 board
+	-Displayes how many games you won and lost when you exit.
+	- Fast Game Creation - about 5 seconds
+	- Pic storage - It stores the intro screen and game screen to pics the first time you play for instant acces later.
+	- Time - The game keeps time and keeps track of the 8 best times.
+	- Change the number of mines - You can't change the size of the board but you can change the 	number of mines.
+	
+Memory - 4 programs - 3872
+	Matrix B (7x11) - 704*
+	Matrix D (7x10) - 641*
+	Matrix E (7x10) - 641*
+	Pic 9 - 784
+	Pic 0 - 784
+	LMS(2) - 28
+	LMS(9) - 91
+	L5 (?)*
+	L6 (?)*
+*These are deleted when you exit the game(by selecting exit from the main menu)
+
+Errors: There are three possible errors that this program can generate:
+
+ERROR WINDOW (very rare) - This would happen if you set the window to something that is invalid and then run the program.  When the program Recals the Into screen pic it will error.  To fix the error simply run the program again and it will redraw the pic.
+
+ERROR UNDEFINED - This can happen if the program tries to recal the pic when it is not there.  To fix this, simply run the program again.  
+
+ERROR ARCHIVED (83+ only) - This error happens if one of the following variables is archived: Pic9, Pic0, [B], [D], [E], L5, L6, list MD, list MS, A, B, D, E, G, I, J, L, P, Q, R, S, T, U, V, X, Y, (theta) or programs MSWEEP, ZMSG, ZMSNG, ZMSO.  To fix this problem make sure all these variables are unarchived.	
+
+			CODE INFO
+
+PROGRAM INFO:
+B(7x10) - keeps track of the numbers (the ones twos etc. you see on the board) and the mines (a mine is a number greater than 8). DIM=(7x11) instead if 7x10 so no domain checking needs to be done on the right during game creation
+D(7x10) - Flags.  1=no flag  2=flag.  to switch  3-[D](x,y) --> [D](x,y) 
+E (7x10) - For opening 1=the top of a colum that needs to be looked at  2=a spot that is not zero and has already been displayed.  It is not necesary to mark the spots that are zero as displayed because every row starts of with a number greater than zero, if it has been displayed then the whole row has.
+
+Pic9-intro screen
+Pic0-game screen
+
+LMS(9) - High scores.  Filled with 999 so that a new time is the least in the list and shows up as number one.  New times put in 9 and then list is sorted in acending order
+LMD(3) - Data.  (1)-have directions been shown yet.  (2)-Have pics been stored 0=none 1=intro 2=intro and game screen.  The Auto redraw works like this:
+0->LMD(2)
+Recallpic 9  If it errors here then the next time the program runs LMD(2)=0 and that tells the program to redraw the pic
+1->LMD(2)
+
+L5(no more than 8) - up/down values for opening to-do list
+L6(no more than 8) - left/right values for opening to-do list
+
+In-game variables
+A,B - coodinates for the cursor (graph coordinates)
+D,E - Previous location of cursor
+I,J - The location of the cursor in matrix coordinates. (in the opening they are the matrix coordinates of the current spot the code is dilplaying or looking at etc.)
+S - number of mines in the current game
+(theta) - number of flags that are left
+W - # of correctly placed flags.
+T- Time
+U - Used as the Current and Previous getkey value
+Other variables are used for temporary purposes.  
+
+MSWEEP
+This program has this inro screen the menues the options and the directions.  The intro screen is drawn using sin and cos to reflect half a spike over its center axis and rotate that axis around the center of the mine.  This is done using only one line cammand and one pt-on cammand.
+
+ZMSG
+This program has most of the in-game code and runs ZMSNG.  It has the game loop the select code the place flag code and the fixing code.  It also has the code that corrects the board when you lose and displayed the best times when you win.  If you select a spot that has no mines bordering it it runs ZMSO.  The win loss works by checking if W(# of correctly placed mines)=S(# of mines) and theta(number of flags)=0.
+The fixing code removes the mine you hit and finds a new place to put it.
+	
+ZMSNG
+This creates a new game.  It randomly picks coodinates for a mine (A,B) adds 9 to [B](A,B) to mark it as a mine and ads one to all the spots bordering it to generate the ones twos threes etc. you see when playing. 
+
+ZMSO
+This is by far the most complicated part if the program.  
+
+It works by moving in rows-always to the right.
+When you first select a spot that is zero the program moves to the left using a while loop.
+It then displays whatever the left of the row is and moves into one of two loops. 
+ 
+ There is a loop that is used while the spots are zero (Lbl Z and Lbl 0) 
+ and there is a loop for when the spots are greater than zero (Lbl O and Lbl 2).  
+
+The actual loops are Lbl 0 and Lbl 2 respectivly but when the spots switch from 0 to >0 or >0 to 0 some work needs to be done so Lbl Z and Lbl O are used when switching or when a row begins.
+
+ The code under Lbl Z is what stores coordinates for a new colum into the to-do lists (L5 - up/down L6- left/right).
+ When the values switch from >0 to 0 or if a row begins on a 0 
+ then the coordinates of the spot one up and one to the left and the spot one down and one to the left are where new columns should begin.  Before doing this though it checks to make sure these spots havn't already been done by checking [E] and making sure it is zero.  
+ 
+ The code under Lbl O checks some stuff and then there is a complicated logic statement.  This command checks wether the spot above is zero or the spot below is zero or neither(and does domain checking at the same time).  If neither(G=0) above or below is zero then this is the end of the row and it goes to >>Lbl N<< which displayes this spot and then moves on to the next row.  If there is a zero above (G=-1 (remember matricis are upside down)) or if there is a Zero below (G=1) then the column is not done yet (there can't be a zero above and below).  The program then drops into the loop under Lbl 2 and continues until it has reached the end of the screen, until it is on a spot that is zero or until the spot above or below it(one of the two depending on G) is not zero.  

@@ -1,0 +1,269 @@
+StoreGDB GDB1
+"+  +  +  +  +  +  +  +  +  +  +  +→Str1
+ClrHome
+Menu("BOARD","10X12,12",1,"8X8,6",2
+Lbl 1
+10→H
+12→W
+12→N
+Goto 3
+Lbl 2
+8→H
+8→W
+6→N
+Lbl 3
+
+ClrHome
+{H,W+1→dim([A]
+Fill(0,[A]
+{H,W→dim([B]
+Fill(10,[B]
+FnOff 
+ClrDraw
+AxesOff
+ZInteger
+
+Text(19,35,"LOADING
+Line(⁻30,2,⁻30,⁻2
+Line(30,2,30,⁻2
+Text(43,50,"X
+Pt-Off(3,⁻14
+Pt-Off(5,⁻16
+For(C,1,N
+  60/NC-30
+  For(A,1,⁻1,⁻1
+    Line(⁻30,A,Ans,A
+  End
+  int(C/N100
+  Text(43,46-4(Ans>9)-4(Ans>99),Ans
+  Repeat 9>[A](A,B
+    randInt(1,H→A
+    randInt(1,W→B
+  End
+  9+[A](A,B→[A](A,B
+  If A≠1
+  Then
+    If B>1
+    1+[A](A-1,B-1→[A](A-1,B-1
+    1+[A](A-1,B→[A](A-1,B
+    1+[A](A-1,B+1→[A](A-1,B+1
+  End
+  If B>1
+  1+[A](A,B-1→[A](A,B-1
+  1+[A](A,B+1→[A](A,B+1
+  If A≠H
+  Then
+    If B>1
+    1+[A](A+1,B-1→[A](A+1,B-1
+    1+[A](A+1,B→[A](A+1,B
+    1+[A](A+1,B+1→[A](A+1,B+1
+  End
+End
+ClrDraw
+Vertical ⁻47
+Vertical 47
+Horizontal ⁻31
+Horizontal 31
+Line(⁻46,29-6H,6W-47,29-6H
+Line(6W-47,31,6W-47,29-6H
+sub(Str1,1,3W-2
+For(A,1,H
+  Text(6A-5,2,Ans
+End
+Line(34,24,38,24
+Line(34,10,38,10
+Line(29,15,29,19
+Line(43,15,43,19
+Line(30,13,32,11
+Line(30,21,32,23
+Line(40,23,42,21
+Line(42,13,40,11
+Pt-On(39,23
+Pt-On(42,20
+Pt-On(42,14
+Pt-On(39,11
+Pt-On(33,11
+Pt-On(30,14
+Pt-On(30,20
+Pt-On(33,23
+Line(33,20,39,20
+Pt-Off(36,20
+Line(33,18,39,18
+Pt-Off(36,18
+For(A,0,3
+  Pt-On(33+2A,19
+End
+Line(34,14,38,14
+
+Text(28,78,"*:",N
+0→F
+Text(40,78,"F:",F
+Pt-On(32,⁻11
+Pt-On(33,⁻11
+Pt-On(33,⁻12
+0→C
+1→A
+1→B
+1→P
+While C<HW-N and P
+  getKey→K
+  If K=81
+  0→P
+  Line(6B-48,36-6A,6B-48,30-6A
+  Line(6B-52,36-6A,6B-52,30-6A
+  If K and K≠105
+  Then
+    Line(6B-52,36-6A,6B-52,30-6A,0
+    Line(6B-48,36-6A,6B-48,30-6A,0
+    A-(K=25)+(K=34→A
+    B-(K=24)+(K=26→B
+    A+Hnot(A)-H(A>H→A
+    B+Wnot(B)-W(B>W→B
+  End
+  If K=55
+  Then
+    If 10=[B](A,B
+    Then
+      F+1→F
+      11→[B](A,B
+      Text(6A-5,6B-4,"F
+      Pxl-On(6A-3,6B-3
+      Pxl-On(6A-3,6B-2
+      Pxl-On(6A-2,6B-2
+      Text(40,84,F
+      Else
+      If 11=[B](A,B
+      Then
+        F-1→F
+        10→[B](A,B
+        Text(6A-5,6B-4,"+
+        Text(40,84,"        "
+        Text(40,84,F
+      End
+    End
+  End
+  If K=105
+  Then
+    Lbl RV
+    [A](A,B
+    If 10=[B](A,B
+    Then
+      Line(33,20,39,20,0
+      Line(33,18,39,18,0
+      Line(35,15,37,15
+      Line(35,13,37,13
+      Pt-On(34,19
+      Pt-On(38,19
+      Pt-Off(36,14
+      Pt-Off(38,14
+      Pt-Off(34,14
+      If Ans≥9
+      Then
+        If C
+        Then
+          Text(6A-5,6B-5,"*
+          Circle(36,14,1
+          Text(9,80,"X
+          Text(9,84,"X
+          For(A,1,H
+            For(B,1,W
+              If 8<[A](A,B
+              Then
+                If 11≠[B](A,B
+                Text(6A-5,6B-5,"*
+                Else
+                If 11=[B](A,B
+                Text(6A-5,6B-4,"X
+              End
+            End
+          End
+          0→P
+          Else
+          [A](A,B)-9→[A](A,B
+          If A≠1
+          Then
+            If B>1
+            [A](A-1,B-1)-1→[A](A-1,B-1
+            [A](A-1,B)-1→[A](A-1,B
+            [A](A-1,B+1)-1→[A](A-1,B+1
+          End
+          If B>1
+          [A](A,B-1)-1→[A](A,B-1
+          [A](A,B+1)-1→[A](A,B+1
+          If A≠H
+          Then
+            If B>1
+            [A](A+1,B-1)-1→[A](A+1,B-1
+            [A](A+1,B)-1→[A](A+1,B
+            [A](A+1,B+1)-1→[A](A+1,B+1
+          End
+          Repeat I≠A and J≠B and 9>[A](I,J
+            randInt(1,H→I
+            randInt(1,W→J
+          End
+          9+[A](I,J→[A](I,J
+          If I≠1
+          Then
+            If J>1
+            1+[A](I-1,J-1→[A](I-1,J-1
+            1+[A](I-1,J→[A](I-1,J
+            1+[A](I-1,J+1→[A](I-1,J+1
+          End
+          If J>1
+          1+[A](I,J-1→[A](I,J-1
+          1+[A](I,J+1→[A](I,J+1
+          If I≠H
+          Then
+            If J>1
+            1+[A](I+1,J-1→[A](I+1,J-1
+            1+[A](I+1,J→[A](I+1,J
+            1+[A](I+1,J+1→[A](I+1,J+1
+          End
+          Goto RV
+        End
+        
+        Else
+        If Ans=0
+        Then
+          Text(50,75,"AUTO
+          prgmAUTOBFS
+          Text(50,75,"                
+          Else
+          Ans→[B](A,B
+          Text(6A-5,6B-4,Ans
+          C+1→C
+        End
+        Line(33,20,39,20
+        Line(33,18,39,18
+        Line(35,15,37,15,0
+        Line(35,13,37,13,0
+        Pt-On(34,14
+        Pt-On(36,14
+        Pt-On(38,14
+        Pt-Off(36,20
+        Pt-Off(36,18
+        Pt-Off(34,19
+        Pt-Off(38,19
+      End
+    End
+  End
+End
+
+If HW-N=C
+Then
+  Line(30,20,42,20
+  Pt-On(38,19
+  Pt-On(34,19
+  Line(33,15,33,16
+  Line(39,16,39,15
+End
+If K≠81
+Pause 
+ClrDraw
+
+DelVar [A]
+DelVar [B]
+RecallGDB GDB1
+DelVar GDB1
+ClrHome
+Output(1,1,"

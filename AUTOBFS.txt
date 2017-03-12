@@ -1,0 +1,32 @@
+1→Q
+2→R
+A→L₁(1
+B→L₂(1
+12→[B](A,B
+While R-Q
+L₁(Q→I
+L₂(Q→J
+Q+1→Q
+If not([A](I,J
+Then
+For(D,I-(I>1),I+(I<H
+For(E,J-(J>1),J+(J<W
+If 10=[B](D,E
+Then
+D→L₁(R
+E→L₂(R
+R+1→R
+12→[B](D,E
+End
+End
+End
+End
+C+1→C
+[A](I,J→[B](I,J
+If Ans
+Then
+Text(6I-5,6J-4,Ans
+Else
+Text(6I-5,6J-4,"   
+End
+End

@@ -1,0 +1,79 @@
+Line(64,8,64,2,0
+Text(54,65,"OPENING
+1→L
+Fill(0,[E]
+1→[E](I,J
+Repeat not(Ans
+  If [B](I,J
+  Goto S
+  If not(pxl-Test(I8-1,J6-1
+  Goto N
+  While J>1 and not([B](I,J
+    J-1→J
+  End
+  If J=1
+  Goto Z
+  Lbl S
+  If 2=[E](I,J
+  Goto N
+  2→[E](I,J
+  Text(I8-4,J6-2,[B](I,J
+  J+1→J
+  If [B](I,Ans
+  Goto O
+  Lbl Z
+  J>1→G
+  If I=1:Goto I
+  If [E](I-1,J-Ans:Goto I
+  L+1→L
+  I-1→L₅(Ans
+  J-G→L₆(L
+  1→[E](I-1,Ans
+  Lbl I
+  If I=7:Goto 0
+  If [E](I+1,J-G
+  Goto 0
+  L+1→L
+  I+1→L₅(Ans
+  J-G→L₆(L
+  1→[E](I+1,Ans
+  Lbl 0
+  Text(I8-4,J6-2,"   
+  If J=10
+  Goto N
+  J+1→J
+  If [B](I,Ans
+  Goto O
+  Text(I8-4,J6-2,"   
+  If J=10
+  Goto N
+  J+1→J
+  If not([B](I,Ans:Goto 0
+  Lbl O
+  If 2=[E](I,J
+  Goto N
+  not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
+  If not(Ans
+  Goto F
+  Lbl 2
+  Text(I8-4,J6-2,[B](I,J
+  2→[E](I,J
+  If J=10
+  Goto N
+  J+1→J
+  If 2=[E](I,Ans
+  Goto N
+  If not([B](I,Ans
+  Goto Z
+  If not([B](I+G,Ans
+  Goto 2
+  Lbl F
+  Text(I8-4,J6-2,[B](I,J
+  Lbl N
+  L₅(L→I
+  L₆(L→J
+  L-1→L
+End
+getKey
+Line(64,8,64,2
+Text(54,65,"   PLAY        

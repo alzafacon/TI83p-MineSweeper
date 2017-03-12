@@ -1,0 +1,123 @@
+Full:GridOff:FnOff :AxesOff:PlotsOff :ClrDraw:ClrHome:Float
+2→dim(ʟMD
+ʟMD(2→A
+If not(Ans
+Goto R
+0→ʟMD(2
+RecallPic 9
+A→ʟMD(2
+Lbl S
+Pause 
+0→Xmin
+94→Xmax
+0→Ymin
+62→Ymax
+9→dim(ʟMS
+11→S
+{7,Ans→dim([B]
+{7,10→dim([D]
+Ans→dim([E]
+0→P:0→Q
+1→dim(L₅
+Lbl M
+1→dim(L₆
+Menu("  MINE SWEEPER  ","PLAY",P,"OPTIONS",O,"DIRECTIONS",D,"ABOUT",A,"EXIT",X
+Lbl D
+ClrDraw
+Text(7,6,"DIRECTIONS:
+Text(14,6,"ENTER-PRESS WHEN DONE
+Text(21,6,"2ND-SELECTS SPOT
+Text(28,6,"ALPHA-PLACES FLAG
+Text(35,6,"ARROWS-MOVE CURSOR
+Pause 
+If Ans
+Goto M
+1→ʟMD(1
+Lbl P
+ʟMD(1
+If not(Ans
+Goto D
+prgmZMSG
+Goto M
+Lbl O
+Menu("    OPTIONS     ","NUM OF MINES..",CM,"BEST TIMES...",ST,"REINSTALL",R,"BACK",M
+Lbl CM
+Disp "PRESS UP OR DOWN
+Disp "
+Disp "MINES=
+Disp "(SCORE ONLY KEPT","WITH 11)
+Lbl theta
+Output(3,8," 
+Output(3,7,S
+getKey->G
+S+(Ans=25 and S<69)-(Ans=34 and S>1->S
+If G-105 and G-21
+Goto theta
+S->theta
+ClrHome
+Goto M
+Lbl ST
+If not(sum(|LMS
+Fill(999,|LMS
+Output(1,9,"BEST
+Output(2,9,"TIMES
+For(A,1,8
+  Output(A,1,A
+  Output(A,2,")
+  |LMS(A
+  If Ans<999
+  Output(A,3,Ans
+End
+Pause 
+ClrHome
+Goto O
+Lbl A
+ClrDraw
+Text(5,17,"BY CHRIS HAMILTON
+Text(13,2,"CHRISRHAM(AT)HOTMAIL.COM
+Text(21,14,"WWW.BASICODERZ.COM
+Pause 
+ClrDraw
+Goto M
+Lbl R
+DelVar |LMD
+2->dim(|LMD
+Radian
+47->Xmax
+~Ans->Xmin
+35->Ymax
+~27->Ymin
+Horizontal Ans
+Horizontal ~26
+Horizontal 35
+Horizontal 34
+Vertical Xmin
+Vertical ~46
+Vertical 47
+Vertical 46
+Circle(0,0,16
+Circle(0,0,2.9
+1->A
+For(B,0,2pi,2pi/8:For(G,~1,1,2
+    B+.2G->D
+    B+.04G
+  Line(16.5sin(D),16.5cos(D),23sin(Ans),23cos(Ans:End
+  If A=1
+  Pt-On(23sin(B),23cos(B
+  ~A->A
+End
+Text(4,20,"MINE  SWEEPER  83
+Text(54,79,"|v4.1
+StorePic 9
+1->|LMD(2
+Goto S
+Lbl X
+DelVar [B]
+DelVar [D]
+DelVar [E]
+DelVar L5
+DelVar L6
+Output(1,6,P
+Output(2,6,Q
+Disp "WON :
+"LOST:
