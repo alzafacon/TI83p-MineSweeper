@@ -21,7 +21,6 @@ While L>0
   If [A](I,J) and 2≠[E](I,J
   Then
     //reveal !0 tile
-    Pause "!0 !rev
     //If not revealed yet
     If 9≤[B](I,J)
       C+1→C
@@ -84,7 +83,7 @@ While L>0
       
       //calculate if above or below is Zero
       not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
-      Pause G
+
       //while not processed and !0 and above or below is Zero
       While 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
         //Reveal !0
