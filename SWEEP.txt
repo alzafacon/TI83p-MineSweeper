@@ -18,6 +18,7 @@ Lbl 4
 
 ClrHome
 {H,W+1→dim([A]
+Fill(0,[A]
 {H,W→dim([B]
 Fill(10,[B]
 {H,W→dim([E]
@@ -33,6 +34,36 @@ Line(30,2,30,⁻2
 Text(43,50,"X
 Pt-Off(3,⁻14
 Pt-Off(5,⁻16
+For(C,1,N
+60/NC-30
+For(A,1,⁻1,⁻1
+Line(⁻30,A,Ans,A
+End
+int(C/N100
+Text(43,46-4(Ans>9)-4(Ans>99),Ans
+Repeat 9>[A](A,B
+randInt(1,H→A
+randInt(1,W→B
+End
+9+[A](A,B→[A](A,B
+If A≠1
+Then
+If B>1
+1+[A](A-1,B-1→[A](A-1,B-1
+1+[A](A-1,B→[A](A-1,B
+1+[A](A-1,B+1→[A](A-1,B+1
+End
+If B>1
+1+[A](A,B-1→[A](A,B-1
+1+[A](A,B+1→[A](A,B+1
+If A≠H
+Then
+If B>1
+1+[A](A+1,B-1→[A](A+1,B-1
+1+[A](A+1,B→[A](A+1,B
+1+[A](A+1,B+1→[A](A+1,B+1
+End
+End
 ClrDraw
 Vertical ⁻47
 Vertical 47
