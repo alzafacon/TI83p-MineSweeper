@@ -1,0 +1,93 @@
+1→L
+A→I
+B→J
+1→dim(L₅
+1→dim(L₆
+Fill(0,[E]
+1→[E](I,J
+Repeat not(Ans
+If [A](I,J
+Goto S
+If 0=[B](I,J
+Goto N
+While J>1 and not([A](I,J
+J-1→J
+End
+If J=1
+Goto Z
+Lbl S
+If 2=[E](I,J
+Goto N
+2→[E](I,J
+If 9≤[B](I,J
+C+1→C
+[A](I,J→[B](I,J
+Text(6I-5,6J-4,Ans
+J+1→J
+If [A](I,Ans
+Goto O
+Lbl Z
+J>1→G
+If I=1:Goto I
+If [E](I-1,J-Ans:Goto I
+L+1→L
+I-1→L₅(Ans
+J-G→L₆(L
+1→[E](I-1,Ans
+Lbl I
+If I=H:Goto 0
+If [E](I+1,J-G
+Goto 0
+L+1→L
+I+1→L₅(Ans
+J-G→L₆(L
+1→[E](I+1,Ans
+Lbl 0
+If 9≤[B](I,J
+C+1→C
+0→[B](I,J
+Text(6I-5,6J-4,"   "
+If J=W
+Goto N
+J+1→J
+If [A](I,Ans
+Goto O
+If 9≤[B](I,J
+C+1→C
+0→[B](I,J
+Text(6I-5,6J-4,"   "
+If J=W
+Goto N
+J+1→J
+If not([A](I,Ans:Goto 0
+Lbl O
+If 2=[E](I,J
+Goto N
+not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+If not(Ans
+Goto F
+Lbl 2
+If 9≤[B](I,J
+C+1→C
+[A](I,J→[B](I,J
+Text(6I-5,6J-4,Ans
+2→[E](I,J
+If J=W
+Goto N
+J+1→J
+If 2=[E](I,Ans
+Goto N
+If not([A](I,Ans
+Goto Z
+If not([A](I+G,Ans
+Goto 2
+Lbl F
+If 9≤[B](I,J
+C+1→C
+[A](I,J→[B](I,J
+Text(6I-5,6J-4,Ans
+Lbl N
+L₅(L→I
+L₆(L→J
+L-1→L
+End
