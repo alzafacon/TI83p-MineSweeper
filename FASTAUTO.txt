@@ -40,7 +40,7 @@ While L>0
     If I>1
     Then
       //If not processed yet
-      If 0=[B](I-1,J-(J>1)
+      If 0=[E](I-1,J-(J>1)
       Then
         L+1→L
         I-1→L₁(L
@@ -52,7 +52,7 @@ While L>0
     If I<H
     Then
       //If not procesed yet
-      If 0=[B](I+1,J-(J>1)
+      If 0=[E](I+1,J-(J>1)
       Then
         L+1→L
         I+1→L₁(L
@@ -63,6 +63,7 @@ While L>0
   End
   
   //Continue printing zeroes
+  //These are not marking [E] because they are guaranteed to be printed if the non-Zero index in the front is revealed
   While J≤W and 0=[A](I,J
     If 9≤[B](I,J
       C+1→C
@@ -78,81 +79,84 @@ While L>0
   If [A](I,J
   Then
     //While not revealed yet
-    While 8<[B](I,J
+    While 2≠[E](I,J
       //calculate if above or below is Zero
       not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
-      //not processed and !0 and above or below is Zero
-      While 8<[B](I,J) and [A](I,J) and not([A](I+G,J
+      //while not processed and !0 and above or below is Zero
+      While 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
         //Reveal !0
-        C+1→C
+        If 9≤[B](I,J
+          C+1→C
         [A](I,J→[B](I,J
         Text(6I-5,6J-4,Ans
+        2→[E](I,J
         J+1→J
         //If out of range
         If J>W
         Then
           J-1→J
+          //setting to 0 accidentally works
           0→G
         End
       End
-      //end While 8<[B](I,J) and [A](I,J) and G
+      //end while 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
       
-      //If prev while was broken b/c we switched to a 0
+      //If prev while was broken b/c we switched to a 0 (maybe 2!=[E](I,J should be second condition)
       If 0=[A](I,J) and 8<[B](I,J
       Then
-        //If on a zero: add to stack
-        If 0=[A](I,J
+        //If on a zero: add to stack 
+        //look above 
+        If I>1
         Then
-          //look above 
-          If I>1
+          //If not processed yet
+          If 0=[E](I-1,J-(J>1)
           Then
-            //If not processed yet
-            If 8<[B](I-1,J
-            Then
-              L+1→L
-              I-1→L₁(L
-              J-(J>1)→L₂(L
-              12→[B](I,J
-            End
-          End
-          //look below
-          If I<H
-          Then
-            //If not procesed yet
-            If 8<[B](I,J
-            Then
-              L+1→L
-              I+1→L₁(L
-              J-(J>1)→L₂(L
-              12→[B](I,J
-            End
+            L+1→L
+            I-1→L₁(L
+            J-(J>1)→L₂(L
+            1→[E](I+1,Ans
           End
         End
-        //end 0=[A](I,J (if on zero: add to stack)
-        //Continue printing zeroes
-        While J≤W and 0=[A](I,J
-        
-          C+1→C
-          0→[B](I,J
-          Text(6I-5,6J-4,"   "
-          J+1→J
-        End
-        If J>W
-          J-1→J
-        //done looking at zeros
-      Else
-        //Reveal the !0
-        If 8<[B](I,J)
+        //look below
+        If I<H
         Then
-          C+1→C
-          //[A](I,J→[B](I,J
-          Text(6I-5,6J-4,Ans
+          //If not procesed yet
+          If 0=[E](I+1,J-(J>1)
+          Then
+            L+1→L
+            I+1→L₁(L
+            J-(J>1)→L₂(L
+            1→[E](I-1,Ans
+          End
         End
       End
       //end If 0=[A](I,J) and 8<[B](I,J
+      
+      //Continue printing zeroes
+      While J≤W and 0=[A](I,J
+        If 9≤[B](I,J 
+          C+1→C
+        0→[B](I,J
+        Text(6I-5,6J-4,"   "
+        J+1→J
+      End
+      If J>W
+        J-1→J
+      //done looking at zeros
     End
-    //end While not revealed yet
-    //end While 8<[B](I,J
+    //end while 2≠[E](I,J
+    
+    //Reveal the !0 (the infamous Lbl F)
+    If [A](I,J
+    Then
+      If 9≤[B](I,J
+        C+1→C
+      [A](I,J→[B](I,J
+      Text(6I-5,6J-4,Ans
+      //do NOT update [E]. This is because this is the end of the row that was printed. (base on semantics of [E])
+    End
+    //end Lbl F
+  
   End
   //end If advanced to !0
   //end If [A](I,J
