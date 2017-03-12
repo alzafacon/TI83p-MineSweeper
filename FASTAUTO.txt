@@ -3,11 +3,13 @@
 1→dim(L₂
 A→I
 B→J
+//mark as stacked
+1→[E](I,J
 //while stack is not empty
 While L>0
 
   //on a zero not revealed yet
-  If [A](I,J)=0 and 8<[B](I,J
+  If [A](I,J)=0 and 9≤B](I,J
   Then
     //move as far left as possible
     While J>1 and 0=[A](I,J
@@ -16,10 +18,13 @@ While L>0
   End
   
   //If on a !0 and not revealed yet
-  If [A](I,J) and 8<[B](I,J
+  If [A](I,J) and 2≠[E](I,J
   Then
     //reveal !0 tile
-    C+1→C
+    
+    //If not revealed yet
+    If 9≤[B](I,J)
+      C+1→C
     [A](I,J→[B](I,J
     Text(6I-5,6J-4,Ans
     //Should we advance????????? I think yes
@@ -35,31 +40,32 @@ While L>0
     If I>1
     Then
       //If not processed yet
-      If 8<[B](I-1,J
+      If 0=[B](I-1,J-(J>1)
       Then
         L+1→L
         I-1→L₁(L
         J-(J>1)→L₂(L
-        12→[B](I,J
+        1→[E](I+1,Ans
       End
     End
     //look below
     If I<H
     Then
       //If not procesed yet
-      If 8<[B](I,J
+      If 0=[B](I+1,J-(J>1)
       Then
         L+1→L
         I+1→L₁(L
         J-(J>1)→L₂(L
-        12→[B](I,J
+        1→[E](I-1,Ans
       End
     End
   End
   
   //Continue printing zeroes
   While J≤W and 0=[A](I,J
-    C+1→C
+    If 9≤[B](I,J
+      C+1→C
     0→[B](I,J
     Text(6I-5,6J-4,"   "
     J+1→J
