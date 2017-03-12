@@ -163,17 +163,9 @@ While L>0
       //do NOT update [E]. This is because this is the end of the row that was printed. (base on semantics of [E])
       
       //I think we need to copy and past the 'pop from stack' operations here
-      While L>1 and (2=[E](I,J) or 0=[B](I,J
         L₁(L→I
         L₂(L→J
         L-1→L
-      End
-      If L=1 and (2=[E](I,J) or 0=[B](I,J
-      Then
-        L₁(L→I
-        L₂(L→J
-        L-1→L
-      End
     End
     //end Lbl F
   
@@ -182,15 +174,18 @@ While L>0
   //end If [A](I,J
   
   //while already processed or already cleared a zero
-  While L>1 and (2=[E](I,J) or 0=[B](I,J
-    L₁(L→I
-    L₂(L→J
-    L-1→L
-  End
-  If L=1 and (2=[E](I,J) or 0=[B](I,J
-  Then
-    L₁(L→I
-    L₂(L→J
-    L-1→L
+  If L≥1
+    Then
+    While L>1 and (2=[E](I,J) or 0=[B](I,J
+      L₁(L→I
+      L₂(L→J
+      L-1→L
+    End
+    If L=1 and (2=[E](I,J) or 0=[B](I,J
+    Then
+      L₁(L→I
+      L₂(L→J
+      L-1→L
+    End
   End
 End
