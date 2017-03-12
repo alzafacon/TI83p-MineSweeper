@@ -9,7 +9,7 @@ B→J
 While L>0
 
   //on a zero not revealed yet
-  If [A](I,J)=0 and 9≤B](I,J
+  If [A](I,J)=0 and 0≠[B](I,J
   Then
     //move as far left as possible
     While J>1 and 0=[A](I,J
@@ -21,12 +21,13 @@ While L>0
   If [A](I,J) and 2≠[E](I,J
   Then
     //reveal !0 tile
-    
+    Pause "!0 !rev
     //If not revealed yet
     If 9≤[B](I,J)
       C+1→C
     [A](I,J→[B](I,J
     Text(6I-5,6J-4,Ans
+    2→[E](I,J
     //Should we advance????????? I think yes
     If J<W
       J+1→J
@@ -45,7 +46,7 @@ While L>0
         L+1→L
         I-1→L₁(L
         J-(J>1)→L₂(L
-        1→[E](I+1,Ans
+        1→[E](I-1,Ans
       End
     End
     //look below
@@ -57,7 +58,7 @@ While L>0
         L+1→L
         I+1→L₁(L
         J-(J>1)→L₂(L
-        1→[E](I-1,Ans
+        1→[E](I+1,Ans
       End
     End
   End
@@ -78,10 +79,12 @@ While L>0
   //If advanced to !0
   If [A](I,J
   Then
-    //While not revealed yet
-    While 2≠[E](I,J
+    //Until revealed something or nothing above or below 
+    Repeat 2=[E](I,J) or not(G
+      
       //calculate if above or below is Zero
       not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+      Pause G
       //while not processed and !0 and above or below is Zero
       While 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
         //Reveal !0
@@ -100,6 +103,7 @@ While L>0
         End
       End
       //end while 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
+      not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
       
       //If prev while was broken b/c we switched to a 0 (maybe 2!=[E](I,J should be second condition)
       If 0=[A](I,J) and 8<[B](I,J
@@ -114,7 +118,7 @@ While L>0
             L+1→L
             I-1→L₁(L
             J-(J>1)→L₂(L
-            1→[E](I+1,Ans
+            1→[E](I-1,Ans
           End
         End
         //look below
@@ -126,11 +130,12 @@ While L>0
             L+1→L
             I+1→L₁(L
             J-(J>1)→L₂(L
-            1→[E](I-1,Ans
+            1→[E](I+1,Ans
           End
         End
       End
       //end If 0=[A](I,J) and 8<[B](I,J
+      
       
       //Continue printing zeroes
       While J≤W and 0=[A](I,J
@@ -143,8 +148,10 @@ While L>0
       If J>W
         J-1→J
       //done looking at zeros
+      
+      
     End
-    //end while 2≠[E](I,J
+    //end Repeat 2=[E](I,J) or not(G
     
     //Reveal the !0 (the infamous Lbl F)
     If [A](I,J
@@ -154,6 +161,19 @@ While L>0
       [A](I,J→[B](I,J
       Text(6I-5,6J-4,Ans
       //do NOT update [E]. This is because this is the end of the row that was printed. (base on semantics of [E])
+      
+      //I think we need to copy and past the 'pop from stack' operations here
+      While L>1 and (2=[E](I,J) or 0=[B](I,J
+        L₁(L→I
+        L₂(L→J
+        L-1→L
+      End
+      If L=1 and (2=[E](I,J) or 0=[B](I,J
+      Then
+        L₁(L→I
+        L₂(L→J
+        L-1→L
+      End
     End
     //end Lbl F
   
@@ -161,13 +181,13 @@ While L>0
   //end If advanced to !0
   //end If [A](I,J
   
-  //while (I,J) is already revealed
-  While L>1 and 9>[B](I,J
+  //while already processed or already cleared a zero
+  While L>1 and (2=[E](I,J) or 0=[B](I,J
     L₁(L→I
     L₂(L→J
     L-1→L
   End
-  If L=1 and 9>[B](I,J
+  If L=1 and (2=[E](I,J) or 0=[B](I,J
   Then
     L₁(L→I
     L₂(L→J
