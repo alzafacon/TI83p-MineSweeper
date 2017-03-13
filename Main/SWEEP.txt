@@ -231,7 +231,7 @@ Else
 If Ans=0
 Then
 Text(50,75,"AUTO
-prgmHAMAUTO
+prgmROAR
 Text(50,75,"                
 Else
 Ans→[B](A,B
