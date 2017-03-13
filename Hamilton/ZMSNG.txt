@@ -36,36 +36,36 @@ Text(54,66,"MINE:
 StorePic 0
 Lbl S
 Text(41,80,S
-//Fill(0,[B]
+Fill(0,[B]
 Fill(1,[D]
 Fill(0,[E]
 
-//For(G,1,S
-//  Line(65,9,G/S28+64,9
-//  Text(54,85,G
-//  Repeat 9>[B](A,B
-//    randInt(1,7->A
-//    randInt(1,10->B
-//  End
-//  9+[B](A,Ans->[B](A,Ans
-//  If A=1
-//  Goto 1
-//  If B>1
-//  1+[B](A-1,B-1->[B](A-1,B-1
-//  1+[B](A-1,B->[B](A-1,B
-//  1+[B](A-1,B+1->[B](A-1,B+1
-//  Lbl 1
-//  If B>1
-//  1+[B](A,B-1->[B](A,B-1
-//  1+[B](A,B+1->[B](A,B+1
-//  If A=7
-//  Goto 8
-//  If B>1
-//  1+[B](A+1,B-1->[B](A+1,B-1
-//  1+[B](A+1,B->[B](A+1,B
-//  1+[B](A+1,B+1->[B](A+1,B+1
-//  Lbl 8
-//End
+For(G,1,S
+  Line(65,9,G/S28+64,9
+  Text(54,85,G
+  Repeat 9>[B](A,B
+    randInt(1,7→A
+    randInt(1,10→B
+  End
+  9+[B](A,Ans→[B](A,Ans
+  If A=1
+  Goto 1
+  If B>1
+  1+[B](A-1,B-1→[B](A-1,B-1
+  1+[B](A-1,B→[B](A-1,B
+  1+[B](A-1,B+1→[B](A-1,B+1
+  Lbl 1
+  If B>1
+  1+[B](A,B-1→[B](A,B-1
+  1+[B](A,B+1→[B](A,B+1
+  If A=7
+  Goto 8
+  If B>1
+  1+[B](A+1,B-1→[B](A+1,B-1
+  1+[B](A+1,B→[B](A+1,B
+  1+[B](A+1,B+1→[B](A+1,B+1
+  Lbl 8
+End
 
 2→A:59→B
 59→E:2→D
