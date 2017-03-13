@@ -1,0 +1,190 @@
+1→L
+1→dim(L₁
+1→dim(L₂
+A→I
+B→J
+//mark as stacked
+1→[E](I,J
+//while stack is not empty
+While L>0
+
+  //on a zero not revealed yet
+  If [A](I,J)=0 and 0≠[B](I,J
+  Then
+    //move as far left as possible
+    While J>1 and 0=[A](I,J
+      J-1→J
+    End
+  End
+  
+  //If on a !0 and not revealed yet
+  If [A](I,J) and 2≠[E](I,J
+  Then
+    //reveal !0 tile
+    //If not revealed yet
+    If 9≤[B](I,J)
+      C+1→C
+    [A](I,J→[B](I,J
+    Text(6I-5,6J-4,Ans
+    2→[E](I,J
+    //Should we advance????????? I think yes
+    If J<W
+      J+1→J
+    //The condition may be unnecesarry
+  End
+  
+  //If on a zero: add to stack
+  If 0=[A](I,J
+  Then
+    //look above 
+    If I>1
+    Then
+      //If not processed yet
+      If 0=[E](I-1,J-(J>1)
+      Then
+        L+1→L
+        I-1→L₁(L
+        J-(J>1)→L₂(L
+        1→[E](I-1,Ans
+      End
+    End
+    //look below
+    If I<H
+    Then
+      //If not procesed yet
+      If 0=[E](I+1,J-(J>1)
+      Then
+        L+1→L
+        I+1→L₁(L
+        J-(J>1)→L₂(L
+        1→[E](I+1,Ans
+      End
+    End
+  End
+  
+  //Continue printing zeroes
+  //These are not marking [E] because they are guaranteed to be printed if the non-Zero index in the front is revealed
+  While J≤W and 0=[A](I,J
+    If 9≤[B](I,J
+      C+1→C
+    0→[B](I,J
+    Text(6I-5,6J-4,"   "
+    J+1→J
+  End
+  If J>W
+    J-1→J
+  //done looking at zeros
+  
+  //If advanced to !0
+  If [A](I,J
+  Then
+    //Until revealed something or nothing above or below 
+    Repeat 2=[E](I,J) or not(G
+      
+      //calculate if above or below is Zero
+      not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+
+      //while not processed and !0 and above or below is Zero
+      While 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
+        //Reveal !0
+        If 9≤[B](I,J
+          C+1→C
+        [A](I,J→[B](I,J
+        Text(6I-5,6J-4,Ans
+        2→[E](I,J
+        J+1→J
+        //If out of range
+        If J>W
+        Then
+          J-1→J
+          //setting to 0 accidentally works
+          0→G
+        End
+      End
+      //end while 2≠[E](I,J) and [A](I,J) and not([A](I+G,J
+      not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+      
+      //If prev while was broken b/c we switched to a 0 (maybe 2!=[E](I,J should be second condition)
+      If 0=[A](I,J) and 8<[B](I,J
+      Then
+        //If on a zero: add to stack 
+        //look above 
+        If I>1
+        Then
+          //If not processed yet
+          If 0=[E](I-1,J-(J>1)
+          Then
+            L+1→L
+            I-1→L₁(L
+            J-(J>1)→L₂(L
+            1→[E](I-1,Ans
+          End
+        End
+        //look below
+        If I<H
+        Then
+          //If not procesed yet
+          If 0=[E](I+1,J-(J>1)
+          Then
+            L+1→L
+            I+1→L₁(L
+            J-(J>1)→L₂(L
+            1→[E](I+1,Ans
+          End
+        End
+      End
+      //end If 0=[A](I,J) and 8<[B](I,J
+      
+      
+      //Continue printing zeroes
+      While J≤W and 0=[A](I,J
+        If 9≤[B](I,J 
+          C+1→C
+        0→[B](I,J
+        Text(6I-5,6J-4,"   "
+        J+1→J
+      End
+      If J>W
+        J-1→J
+      //done looking at zeros
+      
+      
+    End
+    //end Repeat 2=[E](I,J) or not(G
+    
+    //Reveal the !0 (the infamous Lbl F)
+    If [A](I,J
+    Then
+      If 9≤[B](I,J
+        C+1→C
+      [A](I,J→[B](I,J
+      Text(6I-5,6J-4,Ans
+      //do NOT update [E]. This is because this is the end of the row that was printed. (base on semantics of [E])
+      
+      //I think we need to copy and past the 'pop from stack' operations here
+        L₁(L→I
+        L₂(L→J
+        L-1→L
+    End
+    //end Lbl F
+  
+  End
+  //end If advanced to !0
+  //end If [A](I,J
+  
+  //while already processed or already cleared a zero
+  If L≥1
+    Then
+    While L>1 and (2=[E](I,J) or 0=[B](I,J
+      L₁(L→I
+      L₂(L→J
+      L-1→L
+    End
+    If L=1 and (2=[E](I,J) or 0=[B](I,J
+    Then
+      L₁(L→I
+      L₂(L→J
+      L-1→L
+    End
+  End
+End

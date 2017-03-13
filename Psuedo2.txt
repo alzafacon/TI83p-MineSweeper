@@ -1,0 +1,92 @@
+
+push Epsilon
+1->L
+
+while stack not empty
+    
+    #new ix to consider
+    if not revealed:
+        
+        while on zero and J>1
+            #on cov. zero
+            J-1->J 
+            
+            #left of zero
+        
+        if !0
+            #on !0 boundary (may be rev.)
+            if Revealed already 
+                #on previously revealed row (furthermore index to !0) 
+            if on not revealed and !0 (first time around guaranteed to be !0)
+                print !0
+                mark as 2
+                J+1->J 
+                #need to goto (right of !0) state
+                
+                if on !0
+                    print !0 # (don't mark as processed)
+                    #!0 printed
+            
+                while on !0 and (above=0 or below=0) and not on last col
+                    mark as 2
+                    #not end of print row
+                    J+1->J 
+                    #rht of !0
+                    if on !0
+                        print !0 # (don't mark as processed)   
+                #end of print row
+                        
+                    
+        
+        
+        while no more left tiles (i.e. J=1 or on zero)
+            #on 0
+            
+            #stack pushes
+            if I!=1
+                if (I-1,J-(J>1)) not marked
+                    mark (I-1,J-(J>1)) as 1 (indicates stacked)
+                    L+1->L 
+                    I->L1(L)
+                    J->L2(L)
+            if I!=H
+                if (I+1,J-(J>1)) not marked
+                    mark (I+1,J-(J>1)) as 1 (indicates stacked)
+                    L+1->L 
+                    I->L1(L)
+                    J->L2(L)
+            #stack pushed (maybe twice)
+            
+            print 0 (at I,J)
+            #on printed 0
+            
+            while on zero and not on last col (J=W)
+                J+1->J 
+                #on right of 0
+                if on zero
+                    print 0
+            
+            if on !0
+                #on !0 right of 0
+                print !0 # (don't mark as processed)
+            #!0 printed
+            
+            while on !0 and (above=0 or below=0) and not on last col
+                mark as 2
+                #not end of print row
+                J+1->J 
+                #rht of !0
+                if on !0
+                    print !0 # (don't mark as processed)   
+            #end of print row
+            if on zero 
+                #on 0 right of !0
+                # (loop for 'on zero' takes care of this)
+                
+                
+            #end of print row
+    #pop from stack
+    L1(L)->I
+    L2(L)->J
+    L-1->L 
+    
