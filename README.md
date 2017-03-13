@@ -11,7 +11,7 @@ I wrote a breadth-first search algorithm to perform auto-reveal. unfortunately t
 
 For any given tile no more than 2 checks are ever made, and almost all of the time 0 checks are made. This explains why Hamilton's auto-reveal is _so_ much faster than breadth-first search.
 
-# Development Enviorment
+### Development Enviorment
 I am using TokenIDE for editing the programs. I don't know where I got it, but it should be easy to Google. I recommend saving two versions of your programs. One in .txt and the other should be .8xp which you should let TokenIDE compile for you. Never open an .8xp in TokenIDE! Although it works, you will lose all comments and formatting that you have saved in your .txt file.
 
 I find it useful to have an emulator to test the programs. I use WabbitEmu (should also be easy to Google). You will need to get a hold of a ROM. To my understanding this is basically a copy of the operating system for the calculator. This must be extracted from a physical calulator. It is **illegal** to distibute ROMs. Alternataively, you could just use TI-Connect and test the programs on a physical calulator.
@@ -21,3 +21,6 @@ In summary, to get programming you will need:
 2. Calculator (preferably TI-83+)
   -An emulator (for example WabbitEmu) and a ROM (for TI-83+ of course)
   -or a physical calculator
+
+### So what is actually working?
+Use SWEEP.8XP (in the Main folder) and HAMAUTO.8XP (in the HamiltonAlg++ folder) for a working version. The folder 'Hamilton' contains the files from Hamilton's original project.
