@@ -1,0 +1,144 @@
+1→L
+1→dim(L₁
+1→dim(L₂
+A→I
+B→J
+//marking as queued (i.e. stacked)
+.1+[A](I,J→[B](I,J
+While L
+    //new ix to consider
+    If 9≤[B](I,J
+    Then
+        While J>1 and not([A](I,J
+            //on cov. zero
+            J-1→J
+            //left of zero 
+        End   
+        If [A](I,J
+        Then
+            //on !0 boundary (may be rev.) 
+            If 9≤[B](I,J
+            Then
+                If 9≤[B](I,J
+                    C+1→C
+                .2+[A](I,J→[B](I,J
+                Text(6I-5,6J-4,int(Ans
+                J+1→J
+                //need to goto (right of !0) state 
+                If [A](I,J
+                Then
+                    If 9≤[B](I,J
+                        C+1→C
+                    [A](I,J→[B](I,J
+                    Text(6I-5,6J-4,Ans
+                End
+                //end If [A](I,J
+                    //!0 printed
+                not([A](I+(I≠H),J))-not([A](I-(I≠1),J)→G
+                While [A](I,J) and J≠W and not([A](I+G,J
+                    .2+[A](I,J→[B](I,J
+                    //not end of print row
+                    J+1→J 
+                    //rht of !0
+                    If [A](I,J
+                    Then
+                        If 9≤[B](I,J
+                            C+1→C
+                        [A](I,J→[B](I,J
+                        Text(6I-5,6J-4,Ans
+                    End
+                    //end If [A](I,J)
+                End
+                //end While [A](I,J) and 0=[A](I+G,J) and J≠W
+                //end of print row
+            End
+           //end If 9≤[B](I,J 
+        End
+        //end If [A](I,J
+        While not([A](I,J
+            //on 0
+            //stack pushes
+            If I≠1
+            Then
+              If not(fPart([B](I-1,J-(J>1
+              Then
+                  L+1→L 
+                  I-1→L₁(L
+                  J-(J>1→L₂(L
+                  .1+[A](I-1,J-(J>1→[B](I-1,J-(J>1
+               End
+               //end If 0=fPart([B](I-1,J-(J>1
+            End
+            //end If I≠1
+            If I≠H
+            Then
+              If not(fPart([B](I+1,J-(J>1
+              Then
+                  L+1→L 
+                  I+1→L₁(L
+                  J-(J>1→L₂(L
+                  .1+[A](I+1,J-(J>1→[B](I+1,J-(J>1
+               End
+               //end If 0=fPart([B](I+1,J-(J>1
+            End
+            //end If I≠H
+            //stack pushed (maybe twice)
+            If 9≤[B](I,J
+                C+1→C
+            0→[B](I,J
+            Text(6I-5,6J-4,0
+            //on printed 0
+            While J≠W and not([A](I,J
+                J+1→J
+                //on right of 0
+                If not([A](I,J
+                Then
+                    If 9≤[B](I,J
+                        C+1→C
+                    0→[B](I,J
+                    Text(6I-5,6J-4,0
+                End
+                //end If 0=[A](I,J)
+            End
+            //end While 0=[A](I,J) and J≠W
+            If [A](I,J
+            Then
+                //on !0 right of 0
+                If 9≤[B](I,J
+                    C+1→C
+                [A](I,J→[B](I,J
+                Text(6I-5,6J-4,Ans
+                //!0 printed
+            End
+            //end If [A](I,J
+            not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+            While [A](I,J) and 0=[A](I+G,J) and J≠W
+                .2+[A](I,J→[B](I,J
+                //not end of print row
+                J+1→J
+                //rht of !0
+                If [A](I,J
+                Then
+                    If 9≤[B](I,J
+                        C+1→C
+                    [A](I,J→[B](I,J
+                    Text(6I-5,6J-4,Ans
+                End
+                //end If [A](I,J)
+            //end of print row
+            End
+            //end While [A](I,J) and 0=[A](I+G,J) and J≠W
+        End
+        //end While 0=[A](I,J)
+            //If on zero 
+                //on 0 right of !0
+                // (loop for 'on zero' takes care of this)
+            //end of print row  
+    End
+    //end if 9<=[B](I,J
+    //pop from stack
+    L₁(L)→I
+    L₂(L)→J
+    L-1→L
+End
+//end While L
