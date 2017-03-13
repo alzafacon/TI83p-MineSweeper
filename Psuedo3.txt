@@ -1,0 +1,118 @@
+
+1->L
+1->dim(L1)
+1->dim(L2)
+A->I
+B->J
+#marking as queued (i.e. stacked)
+.1+[A](I,J)->[B](I,J)
+
+while L
+    
+    #new ix to consider
+    if 9<=[B](I,J)
+        
+        while 0=[A](I,J) and J>1
+            #on cov. zero
+            J-1->J 
+            
+            #left of zero
+        
+        if [A](I,J)
+            #on !0 boundary (may be rev.)
+            #if 9>[B](I,J)
+                #on previously revealed row (furthermore index to !0) 
+            if 9<=[B](I,J)
+                If 9<=[B](I,J)
+                    C+1->C
+                .2+[A](I,J)->[B](I,J)
+                Text(6I-5,6J-4,int(Ans
+                J+1->J
+                #need to goto (right of !0) state 
+                if [A](I,J)
+                    If 9<=[B](I,J)
+                        C+1->C
+                    [A](I,J)->[B](I,J)
+                    Text(6I-5,6J-4,Ans # (don't mark as processed)
+                    #!0 printed
+                not([A](I+(I!=H),J)-not([A](I-(I!=1),J)->G
+                
+                while [A](I,J) and 0=[A](I+G,J) and J!=W
+                    .2+[A](I,J)->[B](I,J)
+                    #not end of print row
+                    J+1->J 
+                    #rht of !0
+                    if [A](I,J)
+                        If 9<=[B](I,J)
+                            C+1->C
+                        [A](I,J)->[B](I,J)
+                        Text(6I-5,6J-4,Ans # (don't mark as processed)   
+                #end of print row
+                        
+                    
+        
+        
+        while 0=[A](I,J)
+            #on 0
+            
+            #stack pushes
+            if I!=1
+                if (I-1,J-(J>1)) not marked
+                    L+1->L 
+                    I-1->L1(L)
+                    J-(J>1)->L2(L)
+                    .1+[A](I-1,(J>1))->[B](I-1,J-(J>1)
+            if I!=H
+                if (I+1,J-(J>1)) not marked
+                    L+1->L 
+                    I+1->L1(L)
+                    J-(J>1)->L2(L)
+                    .1+[A](I+1,J-(J>1))->[B](I-1,J-(J>1)
+            #stack pushed (maybe twice)
+            
+            If 9<=[B](I,J)
+                C+1->C
+            0->[B](I,J)
+            Text(6I-5,6J-4,0
+            #on printed 0
+            
+            while 0=[A](I,J) and J!=W
+                J+1->J
+                #on right of 0
+                if 0=[A](I,J)
+                    If 9<=[B](I,J)
+                        C+1->C
+                    0->[B](I,J)
+                    Text(6I-5,6J-4,0
+            
+            if [A](I,J)
+                #on !0 right of 0
+                If 9<=[B](I,J)
+                    C+1->C
+                [A](I,J)->[B](I,J)
+                Text(6I-5,6J-4,Ans # (don't mark as processed) 
+                #!0 printed
+            not([A](I+(I!=H),J)-not([A](I-(I!=1),J)->G
+            
+            while [A](I,J) and 0=[A](I+G,J) and J!=W
+                .2+[A](I,J)->[B](I,J)
+                #not end of print row
+                J+1->J
+                #rht of !0
+                if [A](I,J)
+                    If 9<=[B](I,J)
+                        C+1->C
+                    [A](I,J)->[B](I,J)
+                    Text(6I-5,6J-4,Ans # (don't mark as processed)   
+            #end of print row
+            #if on zero 
+                #on 0 right of !0
+                # (loop for 'on zero' takes care of this)
+                
+                
+            #end of print row
+    #pop from stack
+    L1(L)->I
+    L2(L)->J
+    L-1->L
+    
