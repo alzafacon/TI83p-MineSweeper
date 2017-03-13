@@ -4,7 +4,7 @@
 A→I
 B→J
 //marking as queued (i.e. stacked)
-.1+[B](I,J→[B](I,J
+.1+int([B](I,J→[B](I,J
 While L
     //new ix to consider
     If 9≤[B](I,J
@@ -55,6 +55,9 @@ While L
            //end If 9≤[B](I,J 
         End
         //end If [A](I,J
+        
+        //I think the J!=W should be an if statment inside the while loop
+        //alternatively use an OR instead of AND
         While J≠W and not([A](I,J
             //on 0
             //stack pushes
