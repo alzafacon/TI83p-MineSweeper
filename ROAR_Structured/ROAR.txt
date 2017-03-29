@@ -1,180 +1,111 @@
+﻿Line(64,8,64,2,0
+Text(54,65,"OPENING
 1→L
-1→dim(L₁
-1→dim(L₂
-A→I
-B→J
-//marking as queued (i.e. stacked)
-.1+int([B](I,J→[B](I,J
-While L
-    //new ix to consider
-    If 9≤[B](I,J
-    Then
-        While J>1 and not([A](I,J
-            //on cov. zero
-            J-1→J
-            //left of zero 
-        End
-        If [A](I,J
+Fill(0,[E]
+1→[E](I,J
+Repeat not(Ans
+
+    If pxl-Test(I8-1,J6-1
+    Then//If pixel in center of tile is on (i.e. If not on a revealed 0)
+        If [B](I,J
+        Then//If on non-0
+            If 2!=[E](I,J
+            Then
+                2→[E](I,J
+                Text(I8-4,J6-2,[B](I,J
+                J+1→J
+            End
+            //If [B](I,Ans
+            //Go,to OntoNon0
+        Else//on 0
+            While J>1 and not([B](I,J
+                J-1→J
+            End//While J>1 and not([B](I,J
+
+            //If J=1                         This goto should be fine
+            //Go,to ZeroFirstEncountered
+        End//If [B](I,J
+    End//If pxl-Test(I8-1,J6-1
+    
+    //HAVEN'T TAKEN CARE OF GOTO STATEMENTS IN IF STATEMENTS ABOVE
+    
+    1->F
+    //F is TRUE always except when the label F should be used
+    //While ((non-0 AND NOT(processed)) OR NOT(revealed)) AND F
+    While (([B](I,J) AND not([E](I,J)) OR (not([B](I,J)) AND pxl-Test(I8-1,J6-1))) AND F
+        Lbl ZeroFirstEncountered
+        If not([B](I,J
         Then
-            //on !0 boundary (may be rev.) 
-            If 9≤[B](I,J
+            J>1→G
+            If I>1
             Then
-                If 9≤[B](I,J
-                    C+1→C
-                .2+[A](I,J→[B](I,J
-                Text(6I-5,6J-4,int(Ans
-                J+1→J
-                //need to goto (right of !0) state 
-                If [A](I,J
+                If not([E](I-1,J-Ans
                 Then
-                    If 9≤[B](I,J
-                        C+1→C
-                    [A](I,J→[B](I,J
-                    Text(6I-5,6J-4,Ans
-                    //!0 printed
-                    not([A](I+(I≠H),J))-not([A](I-(I≠1),J)→G
-                    While [A](I,J) and J≠W and not([A](I+G,J
-                        .2+[A](I,J→[B](I,J
-                        //not end of print row
-                        J+1→J
-                        //rht of !0
-                        If [A](I,J
-                        Then
-                            If 9≤[B](I,J
-                                C+1→C
-                            [A](I,J→[B](I,J
-                            Text(6I-5,6J-4,Ans
-                        End
-                        //end If [A](I,J)
-                    End
-                    //end While [A](I,J) and 0=[A](I+G,J) and J≠W
-                End
-                //end If [A](I,J
-                //end of print row
+                    L+1→L
+                    I-1→L₅(Ans
+                    J-G→L₆(L
+                    1→[E](I-1,Ans
+                End //If not([E](I-1,J-Ans
+            End //If I>1
+            If I<7
+            Then
+                If not([E](I+1,J-G
+                Then
+                    L+1→L
+                    I+1→L₅(Ans
+                    J-G→L₆(L
+                    1→[E](I+1,Ans
+                End //If not([E](I+1,J-G
+            End //If I<7
+            //replaces 'Label' 0
+            Text(I8-4,J6-2,"   "
+            While J<10 and not([B](I,J
+                J+1→J
+                If not([B](I,Ans
+                Text(I8-4,J6-2,"   "
             End
-           //end If 9≤[B](I,J 
         End
-        //end If [A](I,J
         
-        //I think the J!=W should be an if statment inside the while loop
-        //alternatively use an OR instead of AND
-        While J≠W and not([A](I,J
-            //on 0
-            //stack pushes
-            If I≠1
-            Then
-              If not(fPart([B](I-1,J-(J>1
-              Then
-                  L+1→L
-                  I-1→L₁(L
-                  J-(J>1→L₂(L
-                  .1+[B](I-1,J-(J>1→[B](I-1,J-(J>1
-               End
-               //end If 0=fPart([B](I-1,J-(J>1
-            End
-            //end If I≠1
-            If I≠H
-            Then
-              If not(fPart([B](I+1,J-(J>1
-              Then
-                  L+1→L
-                  I+1→L₁(L
-                  J-(J>1→L₂(L
-                  .1+[B](I+1,J-(J>1→[B](I+1,J-(J>1
-               End
-               //end If 0=fPart([B](I+1,J-(J>1
-            End
-            //end If I≠H
-            //stack pushed (maybe twice)
-            If 9≤[B](I,J
-                C+1→C
-            0→[B](I,J
-            Text(6I-5,6J-4,"   "
-            //on printed 0
-            While J≠W and not([A](I,J
-                J+1→J
-                //on right of 0
-                If not([A](I,J
-                Then
-                    If 9≤[B](I,J
-                        C+1→C
-                    0→[B](I,J
-                    Text(6I-5,6J-4,"   "
-                End
-                //end If 0=[A](I,J)
-            End
-            //end While 0=[A](I,J) and J≠W
-            If [A](I,J
-            Then
-                //on !0 right of 0
-                If 9≤[B](I,J
-                    C+1→C
-                [A](I,J→[B](I,J
-                Text(6I-5,6J-4,Ans
-                //!0 printed  
-                not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
-                While [A](I,J) and 0=[A](I+G,J) and J≠W
-                    .2+[A](I,J→[B](I,J
-                    //not end of print row
+        //If J=10//cannot be a non-0, must be a zero
+        //Go,to Next //this is covered by the second condition of if stmt below(?)
+
+        Lbl OntoNon0
+        If 2!=[E](I,J) and [B](I,J)
+        Then
+            not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
+            If not(Ans
+            Then//no zeroes flanking
+                Label Final
+                Text(I8-4,J6-2,[B](I,J
+                0->F
+            Else//there is a flanking 0
+                    
+                Lbl 2    
+                //very similar to Label 0
+                Text(I8-4,J6-2,[B](I,J
+                2→[E](I,J
+
+                While J<10 and [B](I,J) and not([B](I+G,J)
                     J+1→J
-                    //rht of !0
-                    If [A](I,J
+                    If 2!=[E](I,J) and [B](I,J)
                     Then
-                        If 9≤[B](I,J
-                            C+1→C
-                        [A](I,J→[B](I,J
-                        Text(6I-5,6J-4,Ans
+                        Text(I8-4,J6-2,[B](I,J)
+                        If not([B](I+G,J)
+                            2->[E](I,J)
                     End
-                    //end If [A](I,J)
-                //end of print row
                 End
-                //end While [A](I,J) and 0=[A](I+G,J) and J≠W
-            End
-            //end If [A](I,J
-            If J=W and not([A](I,J
-            Then
-                //on 0 right of !0
-                // (loop for 'on zero' does NOT take care of this if we are on the last column)
-                //on 0
-                //stack pushes
-                If I≠1
-                Then
-                  If not(fPart([B](I-1,J-(J>1
-                  Then
-                      L+1→L
-                      I-1→L₁(L
-                      J-(J>1→L₂(L
-                      .1+[B](I-1,J-(J>1→[B](I-1,J-(J>1
-                   End
-                   //end If 0=fPart([B](I-1,J-(J>1
-                End
-                //end If I≠1
-                If I≠H
-                Then
-                  If not(fPart([B](I+1,J-(J>1
-                  Then
-                      L+1→L
-                      I+1→L₁(L
-                      J-(J>1→L₂(L
-                      .1+[B](I+1,J-(J>1→[B](I+1,J-(J>1
-                   End
-                   //end If 0=fPart([B](I+1,J-(J>1
-                End
-                //end If I≠H
-                //stack pushed (maybe twice)
-                If 9≤[B](I,J
-                        C+1→C
-                  0→[B](I,J
-                  Text(6I-5,6J-4,"   "
-            End
-            //end of print row 
-        End
-        //end While 0=[A](I,J) 
-    End
-    //end if 9<=[B](I,J
-    //pop from stack
-    L₁(L→I
-    L₂(L→J
+
+            End//If not(Ans
+        End//If 2!=[E](I,J
+        
+    End//While (([B](I,J) AND not([E](I,J)) OR (not([B](I,J)) AND pxl-Test(I8-1,J6-1))) AND F
+    
+    Lbl Next
+    L₅(L→I
+    L₆(L→J
     L-1→L
 End
-//end While L
+End
+getKey
+Line(64,8,64,2
+Text(54,65,"   PLAY        "
