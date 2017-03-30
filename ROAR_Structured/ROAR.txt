@@ -7,6 +7,11 @@ Repeat not(Ans
     If pxl-Test(I8-1,J6-1
     Then
     //If pixel in center of tile is on (i.e. If not on a revealed 0)
+        While J>1 and not([B](I,J
+                J-1→J
+        End
+        //While J>1 and not([B](I,J
+            
         If [B](I,J
         Then
         //If on non-0
@@ -20,17 +25,17 @@ Repeat not(Ans
             //Go,to OntoNon0
         Else
         //on 0
-            While J>1 and not([B](I,J
-                J-1→J
-            End//While J>1 and not([B](I,J
+            
             //If J=1                         This goto should be fine
             //Go,to ZeroFirstEncountered
-        End//If [B](I,J
-    End//If pxl-Test(I8-1,J6-1    
+        End
+        //If [B](I,J
+    End
+    //If pxl-Test(I8-1,J6-1    
     1→F
     //F is TRUE always except when the label F should be used
-    //While ((non-0 AND NOT(processed)) OR NOT(revealed)) AND F
-    While (([B](I,J) AND not([E](I,J)) OR (not([B](I,J)) AND pxl-Test(I8-1,J6-1))) AND F
+    //While ((non-0 and NOT(processed)) or NOT(revealed)) and F
+    While (([B](I,J) and not([E](I,J))) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
     //Lbl ZeroFirstEncountered
         If not([B](I,J
         Then
@@ -55,7 +60,8 @@ Repeat not(Ans
                     I+1→L₅(Ans
                     J-G→L₆(L
                     1→[E](I+1,Ans
-                End //If not([E](I+1,J-G
+                End
+                //If not([E](I+1,J-G
             End
             //If I<7
             //Label 0
@@ -65,17 +71,17 @@ Repeat not(Ans
                 If not([B](I,Ans
                 Text(I8-4,J6-2,"   "
             End
-        End    
+        End
         //If J=10//cannot be a non-0, must be a zero
         //Go,to Next //this is covered by the second condition of if stmt below(?)
-        Lbl OntoNon0
+        //Lbl OntoNon0
         If 2≠[E](I,J) and [B](I,J)
         Then
             not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
             If not(Ans
             Then
             //no zeroes flanking
-                Label Final
+            //Label Final
                 Text(I8-4,J6-2,[B](I,J
                 0→F
             Else
@@ -99,8 +105,8 @@ Repeat not(Ans
         End
         //If 2≠[E](I,J
     End
-    //While (([B](I,J) AND not([E](I,J)) OR (not([B](I,J)) AND pxl-Test(I8-1,J6-1))) AND F
-    Lbl Next
+    //While (([B](I,J) and not([E](I,J)) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
+    //Lbl Next
     L₅(L→I
     L₆(L→J
     L-1→L
