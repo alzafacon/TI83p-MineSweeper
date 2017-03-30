@@ -1,0 +1,172 @@
+prgmZMSNG
+Lbl L
+T+1→T
+Line(D,E,D+6,E,0
+Line(D+6,E-8,D,E-8,0
+Line(A,B,A+6,B
+Line(A+6,B-8,A,B-8
+B→E:A→D
+Lbl K
+getKey
+Ans(Ans≠U
+While not(Ans
+  T+.06→T
+  Text(33,76,int(Ans
+  getKey
+End
+Ans→U
+If Ans>26
+Goto H
+If Ans=21
+Goto S
+A-6(Ans=24 and A>6)+6(Ans=26 and A<53→A
+B+8(U=25 and B<57→B
+Goto L
+Lbl H
+If Ans=31
+Goto F
+If Ans=105
+Goto FG
+B-8(Ans=34 and B>12→B
+Goto L
+Lbl S
+(A+4)/6→J
+8ˉ¹(67-B→I
+If 2=[D](Ans,J
+Goto K
+If 8<[B](Ans,J
+Goto GO
+1→R
+If not([B](I,J
+Goto 0
+Text(63-B,A+2,[B](I,J
+Goto K
+Lbl F
+(A+4)/6→J
+8ˉ¹(67-B→I
+[D](Ans,J→G
+If Ans=2
+Goto 1
+If pxl-Test(I8+1,J6-2) or not(pxl-Test(I8-1,J6-1
+Goto K
+Text(63-B,A+2,"F
+Pt-On(A+3,B-3
+Pt-On(A+4,B-3
+Pt-On(A+4,B-4
+θ-1→θ
+W+(8<[B](I,J→W
+Goto 2
+Lbl 1
+Text(63-B,A+2,"?
+θ+1→θ
+W-(8<[B](I,J→W
+Lbl 2
+Text(41,84,"        
+Text(41,80,θ
+3-G→[D](I,J
+Goto K
+Lbl 0
+prgmZMSO
+Goto K
+Lbl FM
+Text(54,66,"FIXING
+For(X,⁻1,1,2
+  If X=1
+  Then
+    Repeat 9>[B](I,J
+      randInt(1,7→I
+      randInt(1,10→J
+    End
+    8+[B](I,Ans→[B](I,Ans
+    Else
+    [B](I,J)-8→[B](I,J
+  End
+  For(G,I-1,I+1
+    For(L,J-1,J+1
+      If G<8 and G>0 and L>0
+      X+[B](G,L→[B](G,L
+    End
+  End
+End
+Text(54,66,"  PLAY         
+Goto S
+Lbl GO
+Ans-105
+If R=0 and Ans
+Goto FM
+If Ans
+Text(I8-4,J6-3,"*
+Line(73,42,76,39,0
+Line(76,39,80,39,0
+Line(80,39,83,42,0
+Line(73,39,75,41
+Line(75,41,81,41
+Line(81,41,83,39
+Text(54,68,"LOST
+Q+1→Q
+For(D,1,7
+  For(E,1,10
+    If getKey=21
+    Return
+    If [B](D,E)<9 and 2=[D](D,E
+    Goto X
+    If [B](D,E)>8 and 2-[D](D,E
+    Text(D8-4,E6-3,"*
+  End
+End
+Pause 
+Return
+Lbl X
+Text(D8-4,E6-2,"    
+E6-3→X
+65-D8
+Line(X,Ans,X+4,Ans-4
+Line(X+4,Ans,X,Ans-4
+End
+End
+Pause 
+Return
+Lbl FG
+If W-S or θ-0
+Goto GO
+Text(54,66,"YOU  WIN
+P+1→P
+Line(76,49,73,49
+Line(83,48,73,48
+Line(76,47,73,47
+Line(80,49,83,49
+Line(80,47,83,47
+Line(72,48,69,49
+Line(84,48,87,49
+Pause 
+If S-11
+Return
+If not(sum(ʟMS
+Fill(999,ʟMS
+int(T→T
+Ans→ʟMS(9
+SortA(ʟMS
+Output(1,9,"BEST
+Output(2,9,"TIMES
+For(A,1,8
+  Output(A,2,A
+  Output(A,3,")
+  ʟMS(A
+  If 999>Ans
+  Output(A,4,Ans
+End
+If T≤ʟMS(8
+Then
+  0
+  Repeat T=ʟMS(Ans
+    Ans+1
+  End
+  Output(Ans,1,"*
+  Output(4,9,"*=YOURS
+  Else
+  Output(4,9,T
+  Output(5,9,"DOESN'T
+  Output(6,9,"PLACE
+End
+Pause 
+ClrHome
