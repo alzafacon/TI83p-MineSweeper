@@ -66,7 +66,7 @@ Text(41,80,θ
 3-G→[D](I,J
 Goto K
 Lbl 0
-prgmROAR
+prgmZMSO
 Goto K
 Lbl FM
 Text(54,66,"FIXING
