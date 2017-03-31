@@ -1,10 +1,4 @@
 ClrDraw
-If 2-ʟMD(2
-Goto P
-1→ʟMD(2
-RecallPic 0
-2→ʟMD(2
-Goto S
 Lbl P
 Horizontal 0
 Horizontal 1
@@ -32,8 +26,6 @@ Line(73,42,76,39
 Line(76,39,80,39
 Line(80,39,83,42
 Text(54,66,"MINE:
-2→ʟMD(2
-StorePic 0
 Lbl S
 Text(41,80,S
 Fill(0,[B]
