@@ -6,14 +6,11 @@ Fill(0,[E]
 Repeat not(Ans
     If pxl-Test(I8-1,J6-1
     Then
-    //If pixel in center of tile is on (i.e. If not on a revealed 0)
         While J>1 and not([B](I,J
                 J-1→J
         End
-        //While J>1 and not([B](I,J
         If [B](I,J
         Then
-        //If on non-0
             If 2≠[E](I,J
             Then
                 2→[E](I,J
@@ -21,12 +18,8 @@ Repeat not(Ans
                 J+1→J
             End
         End
-        //If [B](I,J
     End
-    //If pxl-Test(I8-1,J6-1    
     1→F
-    //F is TRUE always except when the label F should be used
-    //While ((non-0 and NOT(processed)) or NOT(revealed)) and F
     While (([B](I,J) and not([E](I,J))) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
         If not([B](I,J
         Then
@@ -40,9 +33,8 @@ Repeat not(Ans
                     J-G→L₆(L
                     1→[E](I-1,Ans
                 End
-                //If not([E](I-1,J-Ans
             End
-            //If I>1
+            
             If I<7
             Then
                 If not([E](I+1,J-G
@@ -52,28 +44,23 @@ Repeat not(Ans
                     J-G→L₆(L
                     1→[E](I+1,Ans
                 End
-                //If not([E](I+1,J-G
             End
-            //If I<7
+            
             Text(I8-4,J6-2,"   "
             While J<10 and not([B](I,J
                 J+1→J
                 If not([B](I,Ans
-                Text(I8-4,J6-2,"   "
+                    Text(I8-4,J6-2,"   "
             End
         End
-        //If J=10 //cannot be a non-0, must be a zero
-        //Go,to Next //this is covered by the second condition of if stmt below(?)
         If 2≠[E](I,J) and [B](I,J)
         Then
             not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
             If not(Ans
             Then
-            //no zeroes flanking
                 Text(I8-4,J6-2,[B](I,J
                 0→F
             Else
-            //there is a flanking 0   
                 Text(I8-4,J6-2,[B](I,J
                 2→[E](I,J
 
@@ -86,13 +73,9 @@ Repeat not(Ans
                             2→[E](I,J)
                     End
                 End
-
             End
-            //If not(Ans
         End
-        //If 2≠[E](I,J
     End
-    //While (([B](I,J) and not([E](I,J)) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
     L₅(L→I
     L₆(L→J
     L-1→L
