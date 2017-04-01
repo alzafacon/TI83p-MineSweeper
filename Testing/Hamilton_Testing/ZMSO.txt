@@ -4,77 +4,78 @@ Text(54,65,"OPENING
 Fill(0,[E]
 1→[E](I,J
 Repeat not(Ans
-If pxl-Test(I8-1,J6-1
-Then
-While J>1 and not([B](I,J
-J-1→J
-End
-If [B](I,J
-Then
-If 2≠[E](I,J
-Then
-2→[E](I,J
-Text(I8-4,J6-2,[B](I,J
-J+1→J
-End
-End
-End
-1→F
-While (([B](I,J) and not([E](I,J))) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
-If not([B](I,J
-Then
-J>1→G
-If I>1
-Then
-If not([E](I-1,J-Ans
-Then
-L+1→L
-I-1→L₅(Ans
-J-G→L₆(L
-1→[E](I-1,Ans
-End
-End
-If I<7
-Then
-If not([E](I+1,J-G
-Then
-L+1→L
-I+1→L₅(Ans
-J-G→L₆(L
-1→[E](I+1,Ans
-End
-End
-Repeat J≥10 or [B](I,J
-Text(I8-4,J6-2,"   "
-If J<10
-J+1→J
-End
-End
-If 2≠[E](I,J) and [B](I,J)
-Then
-not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
-If not(Ans
-Then
-Text(I8-4,J6-2,[B](I,J
-0→F
-Else
-Text(I8-4,J6-2,[B](I,J
-2→[E](I,J
-While J<10 and [B](I,J) and not([B](I+G,J)
-J+1→J
-If 2≠[E](I,J) and [B](I,J)
-Then
-Text(I8-4,J6-2,[B](I,J)
-If not([B](I+G,J)
-2→[E](I,J)
-End
-End
-End
-End
-End
-L₅(L→I
-L₆(L→J
-L-1→L
+  If pxl-Test(I8-1,J6-1
+  Then
+    While J>1 and not([B](I,J
+      J-1→J
+    End
+    If [B](I,J
+    Then
+      If 2≠[E](I,J
+      Then
+        2→[E](I,J
+        Text(I8-4,J6-2,[B](I,J
+        J+1→J
+      End
+    End
+  End
+  1→F
+  While (([B](I,J) and not([E](I,J))) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
+    If not([B](I,J
+    Then
+      J>1→G
+      If I>1
+      Then
+        If not([E](I-1,J-Ans
+        Then
+          L+1→L
+          I-1→L₅(Ans
+          J-G→L₆(L
+          1→[E](I-1,Ans
+        End
+      End
+      If I<7
+      Then
+      If not([E](I+1,J-G
+        Then
+          L+1→L
+          I+1→L₅(Ans
+          J-G→L₆(L
+          1→[E](I+1,Ans
+        End
+      End
+      Repeat J≥10 or [B](I,J
+        Text(I8-4,J6-2,"   "
+        If J<10
+          J+1→J
+      End
+    End
+    If 2≠[E](I,J) and [B](I,J)
+    Then
+      not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
+      Text(I8-4,J6-2,[B](I,J
+
+      If not(Ans
+      Then
+          0→F
+      Else
+          2→[E](I,J
+
+          While J<10 and [B](I,J) and not([B](I+G,J)
+              J+1→J
+              If 2≠[E](I,J) and [B](I,J)
+              Then
+                  Text(I8-4,J6-2,[B](I,J)
+                  If not([B](I+G,J)
+                      2→[E](I,J)
+              End
+          End
+      End
+    End
+  End
+  L₅(L→I
+  L₆(L→J
+  L-1→L
 End
 getKey
 Line(64,8,64,2
