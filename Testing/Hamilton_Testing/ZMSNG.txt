@@ -1,15 +1,5 @@
 ClrDraw
 Lbl P
-Horizontal 0
-Horizontal 1
-Horizontal 62
-Horizontal 61
-Vertical 0
-Vertical 1
-Vertical 94
-Vertical 93
-Vertical 63
-Vertical 64
 Line(65,10,94,10
 For(B,4,54,8
   For(A,4,60,6
@@ -18,7 +8,7 @@ For(B,4,54,8
 End
 Text(41,68,"FL :
 Text(33,68,"T : 0
-Circle(78,45,10
+
 Line(75,49,75,48
 Line(81,49,81,48
 Pt-On(78,44
