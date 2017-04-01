@@ -56,24 +56,21 @@ Repeat not(Ans
         If 2≠[E](I,J) and [B](I,J)
         Then
             not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
-            If not(Ans
-            Then
-                Text(I8-4,J6-2,[B](I,J
-                0→F
-            Else
-                Text(I8-4,J6-2,[B](I,J
+            Text(I8-4,J6-2,[B](I,J
+            
+            While not([B](I+G,J)) and J<10 and [B](I,J)
                 2→[E](I,J
-
-                While J<10 and [B](I,J) and not([B](I+G,J)
-                    J+1→J
-                    If 2≠[E](I,J) and [B](I,J)
-                    Then
-                        Text(I8-4,J6-2,[B](I,J)
-                        If not([B](I+G,J)
-                            2→[E](I,J)
-                    End
+                J+1→J
+                If [B](I,J
+                Then
+                    Text(I8-4,J6-2,[B](I,J
+                    1->[E](I,J)
+                    If J=10 or [B](I+G,J)
+                        0->F
                 End
             End
+            If [B](I+G,J
+            0→F
         End
     End
     L₅(L→I
