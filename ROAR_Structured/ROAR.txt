@@ -1,82 +1,76 @@
-Line(64,8,64,2,0
-Text(54,65,"OPENING
 1→L
-Fill(0,[E]
-1→[E](I,J
+A→I
+B→J
+1→dim(L₅
+1→dim(L₆
 Repeat not(Ans
-    If pxl-Test(I8-1,J6-1
+    If [B](I,J
     Then
-        While J>1 and not([B](I,J
-                J-1→J
+        While J>1 and not([A](I,J
+            J-1→J
         End
-        If [B](I,J
+        If [A](I,J
         Then
-            If 2≠[E](I,J
+            If 9<[B](I,J
             Then
-                2→[E](I,J
-                Text(I8-4,J6-2,[B](I,J
-                J+1→J
+                C+1→C
+                [A](I,J→[B](I,J
+                Text(6I-5,6J-4,Ans
             End
+            J+1→J
         End
     End
     1→F
-    While (([B](I,J) and not([E](I,J))) or (not([B](I,J)) and pxl-Test(I8-1,J6-1))) and F
-        If not([B](I,J
+    While F and ([A](I,J) or [B](I,J
+        If not([A](I,J
         Then
             J>1→G
             If I>1
             Then
-                If not([E](I-1,J-Ans
-                Then
-                    L+1→L
-                    I-1→L₅(Ans
-                    J-G→L₆(L
-                    1→[E](I-1,Ans
-                End
+                L+1→L
+                I-1→L₅(Ans)
+                J-G→L₆(L)
             End
-            
-            If I<7
+            If I<H
             Then
-                If not([E](I+1,J-G
+                L+1→L
+                I+1→L₅(Ans)
+                J-G→L₆(L)
+            End
+            C+1→C
+            0→[B](I,J
+            Text(6I-5,6J-4,"   ")
+            While J<W and not([A](I,J
+                J+1→J
+                If not([A](I,J
                 Then
-                    L+1→L
-                    I+1→L₅(Ans
-                    J-G→L₆(L
-                    1→[E](I+1,Ans
+                    C+1→C
+                    0→[B](I,J
+                    Text(6I-5,6J-4,"   ")
                 End
             End
-            
-            Text(I8-4,J6-2,"   "
-            While J<10 and not([B](I,J
-                J+1→J
-                If not([B](I,Ans
-                    Text(I8-4,J6-2,"   "
+        Else
+            not([A](I+(I≠H),J))-not([A](I-(I≠1),J→G
+            If 9<[B](I,J)
+            Then
+                C+1→C
+                [A](I,J→[B](I,J
+                Text(6I-5,6J-4,Ans
             End
-        End
-        If 2≠[E](I,J) and [B](I,J)
-        Then
-            not([B](I+(I≠7),J))-not([B](I-(I≠1),J→G
-            Text(I8-4,J6-2,[B](I,J
-            
-            While not([B](I+G,J)) and J<10 and [B](I,J)
-                2→[E](I,J
+            While J<W and [A](I,J) and not([A](I+G,J
                 J+1→J
-                If [B](I,J
+                If [A](I,J) and 9<[B](I,J
                 Then
-                    Text(I8-4,J6-2,[B](I,J
-                    1->[E](I,J)
-                    If J=10 or [B](I+G,J)
-                        0->F
+                    C+1→C
+                    [A](I,J→[B](I,J
+                    Text(6I-5,6J-4,Ans
                 End
             End
-            If [B](I+G,J
-            0→F
+            If [A](I+G,J) or (J=W and [A](I,J
+                0→F
         End
     End
     L₅(L→I
     L₆(L→J
     L-1→L
 End
-getKey
-Line(64,8,64,2
-Text(54,65,"   PLAY        "
